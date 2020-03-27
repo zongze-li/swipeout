@@ -82,6 +82,7 @@ export default class Swipeout extends React.Component <SwipeoutPropType, any> {
     if (!isLeft && !isRight) {
       return;
     }
+    this.refreshBtnsRightWidth();
     const { left, right } = this.props;
     this.needShowRight = isLeft && right!.length > 0;
     this.needShowLeft = isRight && left!.length > 0;
@@ -266,4 +267,10 @@ export default class Swipeout extends React.Component <SwipeoutPropType, any> {
       <div {...refProps} {...divProps}>{children}</div>
     );
   }
+
+  refreshBtnsRightWidth = () => {
+		if (!this.btnsRightWidth) {
+			this.btnsRightWidth = this.right ? this.right.offsetWidth : 0;
+		}
+	}
 }
